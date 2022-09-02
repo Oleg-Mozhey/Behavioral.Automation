@@ -74,4 +74,11 @@ public class ElementTransformations
             _ => StringExtensions.ParseNumberFromString(number)
         };
     }
+    
+    [StepArgumentTransformation]
+    public ItemsListWrapper GetItemsListElement(string caption)
+    {
+        var listSelector = _locatorStorageService.Get<ElementSelector>(caption);
+        return new ItemsListWrapper(_webContext, listSelector, caption);
+    }
 }
