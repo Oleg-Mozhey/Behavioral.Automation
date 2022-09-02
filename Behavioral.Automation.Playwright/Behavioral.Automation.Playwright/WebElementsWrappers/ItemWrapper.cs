@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Behavioral.Automation.Playwright.Context;
 using Behavioral.Automation.Playwright.ElementSelectors;
 using Microsoft.Playwright;
@@ -12,21 +11,10 @@ public class ItemWrapper : WebElementWrapper
     
     public ItemWrapper(WebContext webContext, ItemSelector selector, string caption) : base(webContext, selector.CurrentElementSelector, caption)
     {
-        Console.WriteLine($"Selector for item is {selector.BaseElementSelector}");
         ItemSelector = selector;
     }
     
-    public ILocator AddToCartButton
-    {
-        get
-        {
-            Console.WriteLine("Trying to get locator for add to cart button:");
-            Console.WriteLine($"Selector for finding child: {ItemSelector.AddToCartButtonSelector.Selector}");
-            var childLocator = GetChildLocator(ItemSelector.AddToCartButtonSelector);
-            Console.WriteLine($"Locator: {childLocator}");
-            return childLocator;
-        }
-    }
+    public ILocator AddToCartButton => GetChildLocator(ItemSelector.AddToCartButtonSelector);
 
     public ILocator RemoveFromCartButton => GetChildLocator(ItemSelector.RemoveFromCartButtonSelector);
 

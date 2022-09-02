@@ -11,13 +11,7 @@ public class ItemsListBinding
     [Then(@"""(.*)"" has ""(\d*)"" items")]
     public async Task ThenHasItems(ItemsListWrapper element, int quantity)
     {
-        //var innerElements = element.Locator.Locator("xpath=child::*");
-        //var innerElements = element.Locator.Locator("text=Add to cart");
-        var test = element.Locator.ToString();
-        test = test + "  >> text=Add to cart";
-        var innerElements = element.Locator.Locator("text=Add to cart");
-        //xpath=child::*[contains(text(), '{title}')]
-
+        var innerElements = element.Locator.Locator("xpath=child::*");
         await Assertions.Expect(innerElements).ToHaveCountAsync(quantity);
     }
 

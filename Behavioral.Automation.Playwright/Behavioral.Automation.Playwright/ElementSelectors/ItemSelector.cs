@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Behavioral.Automation.Playwright.ElementSelectors;
+﻿namespace Behavioral.Automation.Playwright.ElementSelectors;
 
 public class ItemSelector : ElementSelector
 {
@@ -15,16 +13,9 @@ public class ItemSelector : ElementSelector
     
     public ElementSelector BaseElementSelector { get; }
 
-    public ElementSelector CurrentElementSelector
-    {
-        get
-        {
-            Console.WriteLine("Hello world!");
-            return new ElementSelector()
-                {Selector = $"{BaseElementSelector.Selector} >> xpath=child::*[.//div[contains(text(), '{title}')]]"};
-        }
-        
-    }
+    public ElementSelector CurrentElementSelector =>
+        new()
+            {Selector = $"{BaseElementSelector.Selector} >> xpath=child::*[.//div[contains(text(), '{title}')]]"};
 
     public ElementSelector AddToCartButtonSelector => new() {Selector = "text=Add to cart"};
 
